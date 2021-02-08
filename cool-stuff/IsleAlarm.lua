@@ -1,4 +1,4 @@
-getgenv().Isle = {}
+local Isle = {}
 function Isle:addNotification(Text, R, G, B)
 if game.PlaceId == 3431407618 then
 local alert = Instance.new('Color3Value')
@@ -22,3 +22,4 @@ end
 end
 end
 end
+return Isle
