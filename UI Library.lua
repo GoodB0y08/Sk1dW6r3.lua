@@ -206,7 +206,8 @@ function Flux:Window(text, bottom,mainclr,toclose)
 		end
 	)
 	
-	function Flux:Notification(desc,buttontitle)
+	function Flux:Notification(desc,buttontitle,title)
+		local NotificationFunc = {}
 		for i, v in next, MainFrame:GetChildren() do
 			if v.Name == "NotificationBase" then
 				v:Destroy()
@@ -270,7 +271,7 @@ function Flux:Window(text, bottom,mainclr,toclose)
 		NotificationTitle.Position = UDim2.new(0.0400609747, 0, 0.0761325806, 0)
 		NotificationTitle.Size = UDim2.new(0, 111, 0, 34)
 		NotificationTitle.Font = Enum.Font.GothamBold
-		NotificationTitle.Text = Title.Text .. " | NOTIFICATION"
+		NotificationTitle.Text = title or Title.Text .. " | NOTIFICATION"
 		NotificationTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
 		NotificationTitle.TextSize = 24.000
 		NotificationTitle.TextXAlignment = Enum.TextXAlignment.Left
@@ -307,6 +308,26 @@ function Flux:Window(text, bottom,mainclr,toclose)
 		NotificationDesc.TextWrapped = true
 		NotificationDesc.TextTransparency = 1
 		
+		function NotificationFunc:ChangeDesc(TextToChange)	
+			NotificationDesc.Text = tostring(TextToChange)
+		end
+		
+		functiom NotificationFunc:ChangeDescColor(Color3)
+			NotificationDesc.TextColor3 = Color3
+		end
+		
+		function NotificationFunc:ChangeCloseBtn(CloseBtn)
+			CloseBtn.Text = tostring(CloseBtn)
+		end
+
+		function NotificationFunc:ChangeCloseBtn(CloseBtn)
+			CloseBtn.Text = tostring(CloseBtn)
+		end
+	
+		function NotificationFunc:ChangeNotifTitle(NotifTitlte)
+		NotificationTitle.Text = tostring(NotifTitle)
+		end
+	
 		CloseBtn.MouseEnter:Connect(function()
 			TweenService:Create(
 				CloseBtn,
@@ -395,6 +416,7 @@ function Flux:Window(text, bottom,mainclr,toclose)
 			TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
 			{BackgroundTransparency = 0}
 		):Play()
+	return NotificationFunc
 	end
 	local Tabs = {}
 	function Tabs:Tab(text,ico)
@@ -2275,6 +2297,7 @@ function Flux:Window(text, bottom,mainclr,toclose)
 			Container.CanvasSize = UDim2.new(0, 0, 0, ContainerLayout.AbsoluteContentSize.Y)
 		end
 		function ContainerContent:Line()
+			local LineFunction = {}
 			local Line = Instance.new("TextButton")
 			local LineCorner = Instance.new("UICorner")
 
@@ -2295,8 +2318,13 @@ function Flux:Window(text, bottom,mainclr,toclose)
 			LineCorner.Parent = Line
 			
 			Container.CanvasSize = UDim2.new(0, 0, 0, ContainerLayout.AbsoluteContentSize.Y)
+			function LineFunction(R, G, B)
+				Line.BackgroundColor3 = Color3.fromRGB(R, G, B)
+			end
+			return LineFunction
 		end
 		function ContainerContent:Label(text)
+			local LabelFunction = {}
 			local Label = Instance.new("TextButton")
 			local LabelCorner = Instance.new("UICorner")
 			local Title = Instance.new("TextLabel")
@@ -2331,6 +2359,13 @@ function Flux:Window(text, bottom,mainclr,toclose)
 			Title.TextXAlignment = Enum.TextXAlignment.Left
 			
 			Container.CanvasSize = UDim2.new(0, 0, 0, ContainerLayout.AbsoluteContentSize.Y)
+			Function LabelFunction:Change(ToChange)
+				Title.Text = tostring(ToChange)
+			end
+			function LabelFunction:ChangeTextColor(color3)
+				Title.TextColor3 = tovalue(color3)
+			end
+			return LabelFunction
 		end
 		function ContainerContent:Textbox(text,desc,disapper,callback)
 			if desc == "" then
