@@ -205,13 +205,8 @@ function Flux:Window(text, bottom,mainclr,toclose)
 			end
 		end
 	)
-	function Flux:Notification(desc, buttontitle, title, colorfromrgb)
-		local NotificationFunc = {}
-		if title == "" then
-			title = Title.Text.." | NOTIFICATION"
-		elseif colorfromrgb == "" or "Default" or "default" then
-			colorfromrgb = Color3.fromRGB(64, 68, 75)
-		end
+	
+	function Flux:Notification(desc,buttontitle)
 		for i, v in next, MainFrame:GetChildren() do
 			if v.Name == "NotificationBase" then
 				v:Destroy()
@@ -226,6 +221,7 @@ function Flux:Window(text, bottom,mainclr,toclose)
 		local CloseBtn = Instance.new("TextButton")
 		local CloseBtnCorner = Instance.new("UICorner")
 		local NotificationDesc = Instance.new("TextLabel")
+
 		NotificationBase.Name = "NotificationBase"
 		NotificationBase.Parent = MainFrame
 		NotificationBase.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
@@ -237,9 +233,11 @@ function Flux:Window(text, bottom,mainclr,toclose)
 		NotificationBase.TextColor3 = Color3.fromRGB(0, 0, 0)
 		NotificationBase.TextSize = 14.000
 		NotificationBase.Visible = true
+
 		NotificationBaseCorner.CornerRadius = UDim.new(0, 5)
 		NotificationBaseCorner.Name = "NotificationBaseCorner"
 		NotificationBaseCorner.Parent = NotificationBase
+
 		NotificationFrame.Name = "NotificationFrame"
 		NotificationFrame.Parent = NotificationBase
 		NotificationFrame.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -247,9 +245,11 @@ function Flux:Window(text, bottom,mainclr,toclose)
 		NotificationFrame.ClipsDescendants = true
 		NotificationFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
 		NotificationFrame.Size = UDim2.new(0, 0, 0, 0)
+
 		NotificationFrameCorner.CornerRadius = UDim.new(0, 5)
 		NotificationFrameCorner.Name = "NotificationFrameCorner"
 		NotificationFrameCorner.Parent = NotificationFrame
+
 		NotificationFrameGlow.Name = "NotificationFrameGlow"
 		NotificationFrameGlow.Parent = NotificationFrame
 		NotificationFrameGlow.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -262,6 +262,7 @@ function Flux:Window(text, bottom,mainclr,toclose)
 		NotificationFrameGlow.ImageColor3 = Color3.fromRGB(15, 15, 15)
 		NotificationFrameGlow.ScaleType = Enum.ScaleType.Slice
 		NotificationFrameGlow.SliceCenter = Rect.new(20, 20, 280, 280)
+
 		NotificationTitle.Name = "NotificationTitle"
 		NotificationTitle.Parent = NotificationFrame
 		NotificationTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -269,14 +270,15 @@ function Flux:Window(text, bottom,mainclr,toclose)
 		NotificationTitle.Position = UDim2.new(0.0400609747, 0, 0.0761325806, 0)
 		NotificationTitle.Size = UDim2.new(0, 111, 0, 34)
 		NotificationTitle.Font = Enum.Font.GothamBold
-		NotificationTitle.Text = title
+		NotificationTitle.Text = Title.Text .. " | NOTIFICATION"
 		NotificationTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
 		NotificationTitle.TextSize = 24.000
 		NotificationTitle.TextXAlignment = Enum.TextXAlignment.Left
 		NotificationTitle.TextTransparency = 1
+
 		CloseBtn.Name = "CloseBtn"
 		CloseBtn.Parent = NotificationFrame
-		CloseBtn.BackgroundColor3 = colorfromrgb
+		CloseBtn.BackgroundColor3 = Color3.fromRGB(64, 68, 75)
 		CloseBtn.ClipsDescendants = true
 		CloseBtn.Position = UDim2.new(0.0403124988, 0, 0.720855951, 0)
 		CloseBtn.Size = UDim2.new(0, 366, 0, 43)
@@ -287,9 +289,11 @@ function Flux:Window(text, bottom,mainclr,toclose)
 		CloseBtn.TextSize = 15.000
 		CloseBtn.TextTransparency = 1
 		CloseBtn.BackgroundTransparency = 1
+
 		CloseBtnCorner.CornerRadius = UDim.new(0, 4)
 		CloseBtnCorner.Name = "CloseBtnCorner"
 		CloseBtnCorner.Parent = CloseBtn
+
 		NotificationDesc.Name = "NotificationDesc"
 		NotificationDesc.Parent = NotificationFrame
 		NotificationDesc.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -302,67 +306,95 @@ function Flux:Window(text, bottom,mainclr,toclose)
 		NotificationDesc.TextSize = 15.000
 		NotificationDesc.TextWrapped = true
 		NotificationDesc.TextTransparency = 1
+		
 		CloseBtn.MouseEnter:Connect(function()
-			TweenService:Create(CloseBtn, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
-				TextTransparency = 0
-			}):Play()
+			TweenService:Create(
+				CloseBtn,
+				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+				{TextTransparency = 0}
+			):Play()
 		end)
+
 		CloseBtn.MouseLeave:Connect(function()
-			TweenService:Create(CloseBtn, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
-				TextTransparency = 0.3
-			}):Play()
+			TweenService:Create(
+				CloseBtn,
+				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+				{TextTransparency = 0.3}
+			):Play()
 		end)
+		
 		CloseBtn.MouseButton1Click:Connect(function()
-			TweenService:Create(NotificationDesc, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
-				TextTransparency = 1
-			}):Play()
-			TweenService:Create(CloseBtn, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
-				TextTransparency = 1
-			}):Play()
-			TweenService:Create(NotificationTitle, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
-				TextTransparency = 1
-			}):Play()
-			TweenService:Create(CloseBtn, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
-				BackgroundTransparency = 1
-			}):Play()
+			
+			TweenService:Create(
+				NotificationDesc,
+				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+				{TextTransparency = 1}
+			):Play()
+			TweenService:Create(
+				CloseBtn,
+				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+				{TextTransparency = 1}
+			):Play()
+			TweenService:Create(
+				NotificationTitle,
+				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+				{TextTransparency = 1}
+			):Play()
+			TweenService:Create(
+				CloseBtn,
+				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+				{BackgroundTransparency = 1}
+			):Play()
+			
 			wait(.4)
 			CloseBtn.Visible = false
 			NotificationFrame:TweenSize(UDim2.new(0, 0, 0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .6, true)
+
 			wait(.2)
-			TweenService:Create(NotificationBase, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
-				BackgroundTransparency = 1
-			}):Play()
+			
+			TweenService:Create(
+				NotificationBase,
+				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+				{BackgroundTransparency = 1}
+			):Play()
+			
 			wait(.2)
+			
 			NotificationBase.Visible = false
 		end)
-		TweenService:Create(NotificationBase, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
-			BackgroundTransparency = 0.550
-		}):Play()
+
+		
+		TweenService:Create(
+			NotificationBase,
+			TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+			{BackgroundTransparency = 0.550}
+		):Play()
+		
 		wait(.1)
+		
 		NotificationFrame:TweenSize(UDim2.new(0, 400, 0, 214), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .6, true)
+		
 		wait(.4)
-		TweenService:Create(NotificationDesc, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
-			TextTransparency = .3
-		}):Play()
-		TweenService:Create(CloseBtn, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
-			TextTransparency = .3
-		}):Play()
-		TweenService:Create(NotificationTitle, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
-			TextTransparency = 0
-		}):Play()
-		TweenService:Create(CloseBtn, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
-			BackgroundTransparency = 0
-		}):Play()
-		function NotificationFunc:ChangeDesc(DescChanged)
-			NotificationDesc.Text = DescChanged
-		end
-		function NotificationFunc:ChangeTitle(TitleChanged)
-			NotificationTitle.Text = TitleChanged
-		end
-		function NotificationFunc:ChangeCloseButton(Text)
-			CloseBtn.Text = Text
-		end
-		return NotificationFunc
+		TweenService:Create(
+			NotificationDesc,
+			TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+			{TextTransparency = .3}
+		):Play()
+		TweenService:Create(
+			CloseBtn,
+			TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+			{TextTransparency = .3}
+		):Play()
+		TweenService:Create(
+			NotificationTitle,
+			TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+			{TextTransparency = 0}
+		):Play()
+		TweenService:Create(
+			CloseBtn,
+			TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+			{BackgroundTransparency = 0}
+		):Play()
 	end
 	local Tabs = {}
 	function Tabs:Tab(text,ico)
@@ -2265,10 +2297,10 @@ function Flux:Window(text, bottom,mainclr,toclose)
 			Container.CanvasSize = UDim2.new(0, 0, 0, ContainerLayout.AbsoluteContentSize.Y)
 		end
 		function ContainerContent:Label(text)
-			local LabelFunc = {}
 			local Label = Instance.new("TextButton")
 			local LabelCorner = Instance.new("UICorner")
 			local Title = Instance.new("TextLabel")
+
 			Label.Name = "Label"
 			Label.Parent = Container
 			Label.BackgroundColor3 = Color3.fromRGB(64, 68, 75)
@@ -2280,9 +2312,11 @@ function Flux:Window(text, bottom,mainclr,toclose)
 			Label.Text = ""
 			Label.TextColor3 = Color3.fromRGB(0, 0, 0)
 			Label.TextSize = 14.000
+
 			LabelCorner.CornerRadius = UDim.new(0, 4)
 			LabelCorner.Name = "LabelCorner"
 			LabelCorner.Parent = Label
+
 			Title.Name = "Title"
 			Title.Parent = Label
 			Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -2295,14 +2329,8 @@ function Flux:Window(text, bottom,mainclr,toclose)
 			Title.TextSize = 15.000
 			Title.TextTransparency = 0.300
 			Title.TextXAlignment = Enum.TextXAlignment.Left
+			
 			Container.CanvasSize = UDim2.new(0, 0, 0, ContainerLayout.AbsoluteContentSize.Y)
-			function LabelFunc:Change(ToChange)
-				Title.Text = tostring(ToChange)
-			end
-			function LabelFunc:ChangeTextColor(color3)
-				Title.TextColor3 = color3
-			end
-			return LabelFunc
 		end
 		function ContainerContent:Textbox(text,desc,disapper,callback)
 			if desc == "" then
