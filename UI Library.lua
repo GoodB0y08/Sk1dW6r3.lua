@@ -312,7 +312,7 @@ function Flux:Window(text, bottom,mainclr,toclose)
 			NotificationDesc.Text = tostring(TextToChange)
 		end
 		
-		functiom NotificationFunc:ChangeDescColor(Color3)
+		function NotificationFunc:ChangeDescColor(Color3)
 			NotificationDesc.TextColor3 = Color3
 		end
 		
@@ -2359,7 +2359,7 @@ function Flux:Window(text, bottom,mainclr,toclose)
 			Title.TextXAlignment = Enum.TextXAlignment.Left
 			
 			Container.CanvasSize = UDim2.new(0, 0, 0, ContainerLayout.AbsoluteContentSize.Y)
-			Function LabelFunction:Change(ToChange)
+			function LabelFunction:Change(ToChange)
 				Title.Text = tostring(ToChange)
 			end
 			function LabelFunction:ChangeTextColor(color3)
