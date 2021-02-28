@@ -207,6 +207,7 @@ function Flux:Window(text, bottom,mainclr,toclose)
 	)
 	
 	function Flux:Notification(desc,buttontitle)
+	    local NotifFunc = {}
 		for i, v in next, MainFrame:GetChildren() do
 			if v.Name == "NotificationBase" then
 				v:Destroy()
@@ -307,6 +308,22 @@ function Flux:Window(text, bottom,mainclr,toclose)
 		NotificationDesc.TextWrapped = true
 		NotificationDesc.TextTransparency = 1
 		
+		function NotifFunc(DescriptionToChange)
+		    NotificationDesc.Text = tostring(DescriptionToChange)
+		end
+		
+		function NewTitle(NewNotifTitle)
+		    NotificationTitle.Text = tostring(NewNotifTitle)
+		end
+		
+		function NewCloseBtnText(NewCloseBtnString)
+		    CloseBtn.Text = tostring(NewCloseBtnString)
+		end
+		
+		function newBackGround(newBackGroundColor3)
+		    CloseBtn.BackgroundColor3 = newBackGroundColor3
+		end
+
 		CloseBtn.MouseEnter:Connect(function()
 			TweenService:Create(
 				CloseBtn,
@@ -395,6 +412,7 @@ function Flux:Window(text, bottom,mainclr,toclose)
 			TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
 			{BackgroundTransparency = 0}
 		):Play()
+		return NotifFunc
 	end
 	local Tabs = {}
 	function Tabs:Tab(text,ico)
@@ -2297,6 +2315,7 @@ function Flux:Window(text, bottom,mainclr,toclose)
 			Container.CanvasSize = UDim2.new(0, 0, 0, ContainerLayout.AbsoluteContentSize.Y)
 		end
 		function ContainerContent:Label(text)
+		    local LabelFunc = {}
 			local Label = Instance.new("TextButton")
 			local LabelCorner = Instance.new("UICorner")
 			local Title = Instance.new("TextLabel")
@@ -2329,9 +2348,13 @@ function Flux:Window(text, bottom,mainclr,toclose)
 			Title.TextSize = 15.000
 			Title.TextTransparency = 0.300
 			Title.TextXAlignment = Enum.TextXAlignment.Left
-			
+	        function LabelFunc:Change(TextToChange)
+	            Title.Text = TextToChange
+	       end
 			Container.CanvasSize = UDim2.new(0, 0, 0, ContainerLayout.AbsoluteContentSize.Y)
+		    return LabelFunc
 		end
+		
 		function ContainerContent:Textbox(text,desc,disapper,callback)
 			if desc == "" then
 				desc = "There is no description for this textbox."
