@@ -2349,7 +2349,7 @@ function Flux:Window(text, bottom,mainclr,toclose)
 			Title.TextTransparency = 0.300
 			Title.TextXAlignment = Enum.TextXAlignment.Left
 	        function LabelFunc:Change(TextToChange)
-	            Title.Text = TextToChange
+	            Title.Text = tostring(TextToChange)
 	       end
 			Container.CanvasSize = UDim2.new(0, 0, 0, ContainerLayout.AbsoluteContentSize.Y)
 		    return LabelFunc
