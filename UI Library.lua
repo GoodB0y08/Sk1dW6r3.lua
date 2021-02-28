@@ -396,22 +396,22 @@ function Flux:Window(text, bottom,mainclr,toclose)
 			TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
 			{BackgroundTransparency = 0}
 		):Play()
-		function NotifFunc(DescriptionToChange)
+		function NotificationFunc:NewDescription(DescriptionToChange)
 		    NotificationDesc.Text = tostring(DescriptionToChange)
 		end
 		
-		function NewTitle(NewNotifTitle)
+		function NotificationFunc:NewTitle(NewNotifTitle)
 		    NotificationTitle.Text = tostring(NewNotifTitle)
 		end
 		
-		function NewCloseBtnText(NewCloseBtnString)
+		function NotificationFunc:NewCloseButtonText(NewCloseBtnString)
 		    CloseBtn.Text = tostring(NewCloseBtnString)
 		end
 		
-		function newBackGround(newBackGroundColor3)
+		function NotificationFunc:NewCloseBtnBackground(newBackGroundColor3)
 		    CloseBtn.BackgroundColor3 = newBackGroundColor3
 		end
-		return NotifFunc
+		return NotificationFunc
 	end
 	local Tabs = {}
 	function Tabs:Tab(text,ico)
@@ -2314,7 +2314,7 @@ function Flux:Window(text, bottom,mainclr,toclose)
 			Container.CanvasSize = UDim2.new(0, 0, 0, ContainerLayout.AbsoluteContentSize.Y)
 		end
 		function ContainerContent:Label(text)
-			local LabelFunc = {}
+			local LabFunc = {}
 			local Label = Instance.new("TextButton")
 			local LabelCorner = Instance.new("UICorner")
 			local Title = Instance.new("TextLabel")
@@ -2345,13 +2345,11 @@ function Flux:Window(text, bottom,mainclr,toclose)
 			Title.TextTransparency = 0.300
 			Title.TextXAlignment = Enum.TextXAlignment.Left
 			Container.CanvasSize = UDim2.new(0, 0, 0, ContainerLayout.AbsoluteContentSize.Y)
-			function LabelFunc:Change(ToChange)
-				Title.Text = tostring(ToChange)
-			end
-			function LabelFunc:ChangeTextColor(color3)
-				Title.TextColor3 = color3
-			end
-			return LabelFunc
+            function LabFunc:NewText(TextToChange)
+                print(TextToChange)
+                Title.Text = TextToChange
+            end
+            return LabFunc
 		end
 		
 		function ContainerContent:Textbox(text,desc,disapper,callback)
@@ -2768,5 +2766,3 @@ function Flux:Window(text, bottom,mainclr,toclose)
 	end
 	return Tabs
 end
-return Flux
-
