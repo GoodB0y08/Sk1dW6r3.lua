@@ -2297,13 +2297,11 @@ function Flux:Window(text, bottom,mainclr,toclose)
 			Title.TextSize = 15.000
 			Title.TextTransparency = 0.300
 			Title.TextXAlignment = Enum.TextXAlignment.Left
-			
+            function LabelFunc:Change(newlabel)
+                Title.Text = newlabel
+            end 
 			Container.CanvasSize = UDim2.new(0, 0, 0, ContainerLayout.AbsoluteContentSize.Y)
-			LabelFunc:New(newtext, newbg)
-			    Title.Text = newtext
-			    Label.BackgroundColor3 = newbg
-			end
-		return LabelFunc
+		    return LabelFunc
 		end
 		function ContainerContent:Textbox(text,desc,disapper,callback)
 			if desc == "" then
