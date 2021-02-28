@@ -207,7 +207,7 @@ function Flux:Window(text, bottom,mainclr,toclose)
 	)
 	
 	function Flux:Notification(desc,buttontitle)
-	    local NotifFunc = {}
+		local NotificationFunc = {}
 		for i, v in next, MainFrame:GetChildren() do
 			if v.Name == "NotificationBase" then
 				v:Destroy()
@@ -307,22 +307,6 @@ function Flux:Window(text, bottom,mainclr,toclose)
 		NotificationDesc.TextSize = 15.000
 		NotificationDesc.TextWrapped = true
 		NotificationDesc.TextTransparency = 1
-		
-		function NotifFunc(DescriptionToChange)
-		    NotificationDesc.Text = tostring(DescriptionToChange)
-		end
-		
-		function NewTitle(NewNotifTitle)
-		    NotificationTitle.Text = tostring(NewNotifTitle)
-		end
-		
-		function NewCloseBtnText(NewCloseBtnString)
-		    CloseBtn.Text = tostring(NewCloseBtnString)
-		end
-		
-		function newBackGround(newBackGroundColor3)
-		    CloseBtn.BackgroundColor3 = newBackGroundColor3
-		end
 
 		CloseBtn.MouseEnter:Connect(function()
 			TweenService:Create(
@@ -412,6 +396,21 @@ function Flux:Window(text, bottom,mainclr,toclose)
 			TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
 			{BackgroundTransparency = 0}
 		):Play()
+		function NotifFunc(DescriptionToChange)
+		    NotificationDesc.Text = tostring(DescriptionToChange)
+		end
+		
+		function NewTitle(NewNotifTitle)
+		    NotificationTitle.Text = tostring(NewNotifTitle)
+		end
+		
+		function NewCloseBtnText(NewCloseBtnString)
+		    CloseBtn.Text = tostring(NewCloseBtnString)
+		end
+		
+		function newBackGround(newBackGroundColor3)
+		    CloseBtn.BackgroundColor3 = newBackGroundColor3
+		end
 		return NotifFunc
 	end
 	local Tabs = {}
@@ -2315,11 +2314,10 @@ function Flux:Window(text, bottom,mainclr,toclose)
 			Container.CanvasSize = UDim2.new(0, 0, 0, ContainerLayout.AbsoluteContentSize.Y)
 		end
 		function ContainerContent:Label(text)
-		    local LabelFunc = {}
+			local LabelFunc = {}
 			local Label = Instance.new("TextButton")
 			local LabelCorner = Instance.new("UICorner")
 			local Title = Instance.new("TextLabel")
-
 			Label.Name = "Label"
 			Label.Parent = Container
 			Label.BackgroundColor3 = Color3.fromRGB(64, 68, 75)
@@ -2331,11 +2329,9 @@ function Flux:Window(text, bottom,mainclr,toclose)
 			Label.Text = ""
 			Label.TextColor3 = Color3.fromRGB(0, 0, 0)
 			Label.TextSize = 14.000
-
 			LabelCorner.CornerRadius = UDim.new(0, 4)
 			LabelCorner.Name = "LabelCorner"
 			LabelCorner.Parent = Label
-
 			Title.Name = "Title"
 			Title.Parent = Label
 			Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -2348,11 +2344,14 @@ function Flux:Window(text, bottom,mainclr,toclose)
 			Title.TextSize = 15.000
 			Title.TextTransparency = 0.300
 			Title.TextXAlignment = Enum.TextXAlignment.Left
-	        function LabelFunc:Change(TextToChange)
-	            Title.Text = tostring(TextToChange)
-	       end
 			Container.CanvasSize = UDim2.new(0, 0, 0, ContainerLayout.AbsoluteContentSize.Y)
-		    return LabelFunc
+			function LabelFunc:Change(ToChange)
+				Title.Text = tostring(ToChange)
+			end
+			function LabelFunc:ChangeTextColor(color3)
+				Title.TextColor3 = color3
+			end
+			return LabelFunc
 		end
 		
 		function ContainerContent:Textbox(text,desc,disapper,callback)
@@ -2387,7 +2386,7 @@ function Flux:Window(text, bottom,mainclr,toclose)
 			Textbox.TextSize = 14.000
 
 			TextboxCorner.CornerRadius = UDim.new(0, 4)
-			TextboxCorner.Name = "TextboxCorner"
+			TextboxCorner.Name = "TextboxCnorner"
 			TextboxCorner.Parent = Textbox
 
 			Title.Name = "Title"
