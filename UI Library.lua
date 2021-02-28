@@ -2301,11 +2301,8 @@ function Flux:Window(text, bottom,mainclr,toclose)
 			Container.CanvasSize = UDim2.new(0, 0, 0, ContainerLayout.AbsoluteContentSize.Y)
 			LabelFunc:New(newtext, newbg)
 			    Title.Text = newtext
-			    if newbg == "" then 
-			        Label.BackgroundColor3 = Color3.fromRGB(64, 68, 75)
-			    else
 			    Label.BackgroundColor3 = newbg
-			    end
+			end
 		return LabelFunc
 		end
 		function ContainerContent:Textbox(text,desc,disapper,callback)
