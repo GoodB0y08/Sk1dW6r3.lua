@@ -2300,10 +2300,10 @@ function Flux:Window(text, bottom,mainclr,toclose)
             function LabelFunc:Change(newlabel)
                 Title.Text = newlabel
             end
-		function LabelFunc:NewColor(color3)
-			Title.TextColor3 = Color3.fromRGB(color3
-		end
-			Container.CanvasSize = UDim2.new(0, 0, 0, ContainerLayout.AbsoluteContentSize.Y)
+		    function LabelFunc:NewColor(color3)
+		    	Title.TextColor3 = Color3.fromRGB(color3)
+		    end
+		    	Container.CanvasSize = UDim2.new(0, 0, 0, ContainerLayout.AbsoluteContentSize.Y)
 		    return LabelFunc
 		end
 		function ContainerContent:Textbox(text,desc,disapper,callback)
