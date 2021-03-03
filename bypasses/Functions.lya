@@ -1,0 +1,71 @@
+    function antiafk()
+        local vu = game:GetService("VirtualUser")
+        game:GetService("Players").LocalPlayer.Idled:connect(
+            function()
+                vu:Button2Down(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
+                wait(1)
+                vu:Button2Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
+            end
+        )
+    end
+
+    function WSBypass()
+        local gmt = getrawmetatable(game)
+        setreadonly(gmt, false)
+        local oldindex = gmt.__index
+
+        gmt.__index =
+            newcclosure(
+            function(self, b)
+                if b == "WalkSpeed" then
+                    return 16
+                end
+                return oldindex(self, b)
+            end
+        )
+    end
+
+    function JPBypass()
+        local gmt = getrawmetatable(game)
+        setreadonly(gmt, false)
+        local oldindex = gmt.__index
+
+        gmt.__index =
+            newcclosure(
+            function(self, b)
+                if b == "JumpPower" then
+                    return 16
+                end
+                return oldindex(self, b)
+            end
+        )
+    end
+
+    function Antikick()
+        local mt = getrawmetatable(game)
+        local old = mt.namecall
+
+        setreadonly(mt, false)
+        mt.namecall = function(self, ...)
+            local method = getnamecallmethod()
+            if method == "Kick" then
+                return
+            end
+            return old(self, ...)
+        end
+    end    
+
+    function NCCheckBypass()
+        local statetype = Enum.HumanoidStateType
+		local rnd = Random.new():NextInteger(150, 100000)
+		local mt = getrawmetatable(statetype)
+		local mt_index = mt.__index
+		setreadonly(mt, false)
+		mt.__index = newcclosure(function(t, k)
+			if not checkcaller() and t == statetype and k == "StrafingNoPhysics" then
+				return rnd
+			end
+			return mt_index(t, k)
+		end)
+		setreadonly(mt, true)
+    end
