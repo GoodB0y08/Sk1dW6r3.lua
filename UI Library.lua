@@ -1722,7 +1722,7 @@ function Flux:Window(text, bottom,mainclr,toclose)
 			end
 			return DropFunc
 		end
-		function ContainerContent:Colorpicker(text,preset,callback)
+		function ContainerContent:Colorpicker(text, preset, callback)
 			local ColorPickerToggled = false
 			local OldToggleColor = Color3.fromRGB(0, 0, 0)
 			local OldColor = Color3.fromRGB(0, 0, 0)
@@ -1733,7 +1733,6 @@ function Flux:Window(text, bottom,mainclr,toclose)
 			local ColorPickerInput = nil
 			local ColorInput = nil
 			local HueInput = nil
-			
 			local Colorpicker = Instance.new("Frame")
 			local ColorpickerCorner = Instance.new("UICorner")
 			local Title = Instance.new("TextLabel")
@@ -1760,19 +1759,15 @@ function Flux:Window(text, bottom,mainclr,toclose)
 			local BoxColorCorner = Instance.new("UICorner")
 			local ColorpickerBtn = Instance.new("TextButton")
 			local ToggleBtn = Instance.new("TextButton")
-
-
 			Colorpicker.Name = "Colorpicker"
 			Colorpicker.Parent = Container
 			Colorpicker.BackgroundColor3 = Color3.fromRGB(64, 68, 75)
 			Colorpicker.ClipsDescendants = true
 			Colorpicker.Position = UDim2.new(0.110937499, 0, 0.67653507, 0)
 			Colorpicker.Size = UDim2.new(0, 457, 0, 43)
-
 			ColorpickerCorner.CornerRadius = UDim.new(0, 4)
 			ColorpickerCorner.Name = "ColorpickerCorner"
 			ColorpickerCorner.Parent = Colorpicker
-
 			Title.Name = "Title"
 			Title.Parent = Colorpicker
 			Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -1785,8 +1780,6 @@ function Flux:Window(text, bottom,mainclr,toclose)
 			Title.TextSize = 15.000
 			Title.TextTransparency = 0.300
 			Title.TextXAlignment = Enum.TextXAlignment.Left
-			
-
 			ColorpickerBtn.Name = "ColorpickerBtn"
 			ColorpickerBtn.Parent = Title
 			ColorpickerBtn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -1797,7 +1790,6 @@ function Flux:Window(text, bottom,mainclr,toclose)
 			ColorpickerBtn.Text = ""
 			ColorpickerBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
 			ColorpickerBtn.TextSize = 14.000
-
 			Circle.Name = "Circle"
 			Circle.Parent = Title
 			Circle.Active = true
@@ -1805,11 +1797,9 @@ function Flux:Window(text, bottom,mainclr,toclose)
 			Circle.BackgroundColor3 = Color3.fromRGB(211, 211, 211)
 			Circle.Position = UDim2.new(-0.150690272, 0, 0.503000021, 0)
 			Circle.Size = UDim2.new(0, 11, 0, 11)
-
 			CircleCorner.CornerRadius = UDim.new(2, 6)
 			CircleCorner.Name = "CircleCorner"
 			CircleCorner.Parent = Circle
-
 			CircleSmall.Name = "CircleSmall"
 			CircleSmall.Parent = Circle
 			CircleSmall.Active = true
@@ -1818,22 +1808,18 @@ function Flux:Window(text, bottom,mainclr,toclose)
 			CircleSmall.BackgroundTransparency = 1.000
 			CircleSmall.Position = UDim2.new(0.485673368, 0, 0.503000021, 0)
 			CircleSmall.Size = UDim2.new(0, 9, 0, 9)
-
 			CircleSmallCorner.CornerRadius = UDim.new(2, 6)
 			CircleSmallCorner.Name = "CircleSmallCorner"
 			CircleSmallCorner.Parent = CircleSmall
-
 			Hue.Name = "Hue"
 			Hue.Parent = Title
 			Hue.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 			Hue.Position = UDim2.new(0, 229, 0, 46)
 			Hue.Size = UDim2.new(0, 25, 0, 80)
-
 			HueCorner.CornerRadius = UDim.new(0, 3)
 			HueCorner.Name = "HueCorner"
 			HueCorner.Parent = Hue
-
-			HueGradient.Color = ColorSequence.new {
+			HueGradient.Color = ColorSequence.new{
 				ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 0, 4)),
 				ColorSequenceKeypoint.new(0.20, Color3.fromRGB(234, 255, 0)),
 				ColorSequenceKeypoint.new(0.40, Color3.fromRGB(21, 255, 0)),
@@ -1841,11 +1827,10 @@ function Flux:Window(text, bottom,mainclr,toclose)
 				ColorSequenceKeypoint.new(0.80, Color3.fromRGB(0, 17, 255)),
 				ColorSequenceKeypoint.new(0.90, Color3.fromRGB(255, 0, 251)),
 				ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 0, 4))
-			}			
+			}
 			HueGradient.Rotation = 270
 			HueGradient.Name = "HueGradient"
 			HueGradient.Parent = Hue
-
 			HueSelection.Name = "HueSelection"
 			HueSelection.Parent = Hue
 			HueSelection.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -1855,7 +1840,6 @@ function Flux:Window(text, bottom,mainclr,toclose)
 			HueSelection.Size = UDim2.new(0, 18, 0, 18)
 			HueSelection.Image = "http://www.roblox.com/asset/?id=4805639000"
 			HueSelection.Visible = false
-
 			Color.Name = "Color"
 			Color.Parent = Title
 			Color.BackgroundColor3 = Color3.fromRGB(255, 0, 4)
@@ -1863,11 +1847,9 @@ function Flux:Window(text, bottom,mainclr,toclose)
 			Color.Size = UDim2.new(0, 246, 0, 80)
 			Color.ZIndex = 10
 			Color.Image = "rbxassetid://4155801252"
-
 			ColorCorner.CornerRadius = UDim.new(0, 3)
 			ColorCorner.Name = "ColorCorner"
 			ColorCorner.Parent = Color
-
 			ColorSelection.Name = "ColorSelection"
 			ColorSelection.Parent = Color
 			ColorSelection.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -1878,7 +1860,6 @@ function Flux:Window(text, bottom,mainclr,toclose)
 			ColorSelection.Image = "http://www.roblox.com/asset/?id=4805639000"
 			ColorSelection.ScaleType = Enum.ScaleType.Fit
 			ColorSelection.Visible = false
-
 			Toggle.Name = "Toggle"
 			Toggle.Parent = Title
 			Toggle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -1891,27 +1872,22 @@ function Flux:Window(text, bottom,mainclr,toclose)
 			Toggle.TextSize = 15.000
 			Toggle.TextTransparency = 0.300
 			Toggle.TextXAlignment = Enum.TextXAlignment.Left
-
 			ToggleFrame.Name = "ToggleFrame"
 			ToggleFrame.Parent = Toggle
 			ToggleFrame.BackgroundColor3 = Color3.fromRGB(226, 227, 227)
 			ToggleFrame.Position = UDim2.new(0.778387249, 0, 0.357142866, 0)
 			ToggleFrame.Size = UDim2.new(0, 27, 0, 11)
-
 			ToggleFrameCorner.Name = "ToggleFrameCorner"
 			ToggleFrameCorner.Parent = ToggleFrame
-
 			ToggleCircle.Name = "ToggleCircle"
 			ToggleCircle.Parent = ToggleFrame
 			ToggleCircle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 			ToggleCircle.Position = UDim2.new(0, 0, -0.273000002, 0)
 			ToggleCircle.Selectable = true
 			ToggleCircle.Size = UDim2.new(0, 17, 0, 17)
-
 			ToggleCircleCorner.CornerRadius = UDim.new(2, 8)
 			ToggleCircleCorner.Name = "ToggleCircleCorner"
 			ToggleCircleCorner.Parent = ToggleCircle
-
 			Confirm.Name = "Confirm"
 			Confirm.Parent = Title
 			Confirm.BackgroundColor3 = Color3.fromRGB(64, 68, 75)
@@ -1923,11 +1899,9 @@ function Flux:Window(text, bottom,mainclr,toclose)
 			Confirm.Text = ""
 			Confirm.TextColor3 = Color3.fromRGB(0, 0, 0)
 			Confirm.TextSize = 14.000
-
 			ConfirmCorner.CornerRadius = UDim.new(0, 4)
 			ConfirmCorner.Name = "ConfirmCorner"
 			ConfirmCorner.Parent = Confirm
-
 			ConfirmTitle.Name = "ConfirmTitle"
 			ConfirmTitle.Parent = Confirm
 			ConfirmTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -1939,17 +1913,14 @@ function Flux:Window(text, bottom,mainclr,toclose)
 			ConfirmTitle.TextSize = 15.000
 			ConfirmTitle.TextTransparency = 0.300
 			ConfirmTitle.TextXAlignment = Enum.TextXAlignment.Left
-
 			BoxColor.Name = "BoxColor"
 			BoxColor.Parent = Title
 			BoxColor.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 			BoxColor.Position = UDim2.new(3.26915574, 0, 0.261904776, 0)
 			BoxColor.Size = UDim2.new(0, 35, 0, 19)
-
 			BoxColorCorner.CornerRadius = UDim.new(0, 4)
 			BoxColorCorner.Name = "BoxColorCorner"
 			BoxColorCorner.Parent = BoxColor
-
 			ToggleBtn.Name = "ToggleBtn"
 			ToggleBtn.Parent = Toggle
 			ToggleBtn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -1959,266 +1930,172 @@ function Flux:Window(text, bottom,mainclr,toclose)
 			ToggleBtn.Text = ""
 			ToggleBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
 			ToggleBtn.TextSize = 14.000
-			
 			ColorpickerBtn.MouseEnter:Connect(function()
-				TweenService:Create(
-					Title,
-					TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-					{TextTransparency = 0}
-				):Play()
+				TweenService:Create(Title, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+					TextTransparency = 0
+				}):Play()
 			end)
-
 			ColorpickerBtn.MouseLeave:Connect(function()
-				TweenService:Create(
-					Title,
-					TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-					{TextTransparency = 0.3}
-				):Play()
+				TweenService:Create(Title, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+					TextTransparency = 0.3
+				}):Play()
 			end)
-		 	
 			ColorpickerBtn.MouseButton1Click:Connect(function()
 				if ColorPickerToggled == false then
 					ColorSelection.Visible = true
 					HueSelection.Visible = true
 					Colorpicker:TweenSize(UDim2.new(0, 457, 0, 138), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .6, true)
-					TweenService:Create(
-						Title,
-						TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-						{TextColor3 = PresetColor}
-					):Play()
-					TweenService:Create(
-						Circle,
-						TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-						{BackgroundColor3 = PresetColor}
-					):Play()
-					TweenService:Create(
-						CircleSmall,
-						TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-						{BackgroundTransparency = 0}
-					):Play()
-					TweenService:Create(
-						Title,
-						TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-						{TextTransparency = 0}
-					):Play()
+					TweenService:Create(Title, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+						TextColor3 = PresetColor
+					}):Play()
+					TweenService:Create(Circle, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+						BackgroundColor3 = PresetColor
+					}):Play()
+					TweenService:Create(CircleSmall, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+						BackgroundTransparency = 0
+					}):Play()
+					TweenService:Create(Title, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+						TextTransparency = 0
+					}):Play()
 					wait(.4)
 					Container.CanvasSize = UDim2.new(0, 0, 0, ContainerLayout.AbsoluteContentSize.Y)
 				else
 					ColorSelection.Visible = false
 					HueSelection.Visible = false
 					Colorpicker:TweenSize(UDim2.new(0, 457, 0, 43), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .6, true)
-					TweenService:Create(
-						Title,
-						TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-						{TextColor3 = Color3.fromRGB(255,255,255)}
-					):Play()
-					TweenService:Create(
-						Circle,
-						TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-						{BackgroundColor3 = Color3.fromRGB(211, 211, 211)}
-					):Play()
-					TweenService:Create(
-						CircleSmall,
-						TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-						{BackgroundTransparency = 1}
-					):Play()
-					TweenService:Create(
-						Title,
-						TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-						{TextTransparency = 0.3}
-					):Play()
+					TweenService:Create(Title, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+						TextColor3 = Color3.fromRGB(255, 255, 255)
+					}):Play()
+					TweenService:Create(Circle, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+						BackgroundColor3 = Color3.fromRGB(211, 211, 211)
+					}):Play()
+					TweenService:Create(CircleSmall, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+						BackgroundTransparency = 1
+					}):Play()
+					TweenService:Create(Title, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+						TextTransparency = 0.3
+					}):Play()
 					wait(.4)
 					Container.CanvasSize = UDim2.new(0, 0, 0, ContainerLayout.AbsoluteContentSize.Y)
 				end
 				ColorPickerToggled = not ColorPickerToggled
 			end)
-			
-
 			local function UpdateColorPicker(nope)
 				BoxColor.BackgroundColor3 = Color3.fromHSV(ColorH, ColorS, ColorV)
 				Color.BackgroundColor3 = Color3.fromHSV(ColorH, 1, 1)
-
 				pcall(callback, BoxColor.BackgroundColor3)
 			end
-
-			ColorH =
-				1 -
-				(math.clamp(HueSelection.AbsolutePosition.Y - Hue.AbsolutePosition.Y, 0, Hue.AbsoluteSize.Y) /
-					Hue.AbsoluteSize.Y)
-			ColorS =
-				(math.clamp(ColorSelection.AbsolutePosition.X - Color.AbsolutePosition.X, 0, Color.AbsoluteSize.X) /
-					Color.AbsoluteSize.X)
-			ColorV =
-				1 -
-				(math.clamp(ColorSelection.AbsolutePosition.Y - Color.AbsolutePosition.Y, 0, Color.AbsoluteSize.Y) /
-					Color.AbsoluteSize.Y)
-
+			ColorH = 1 - (math.clamp(HueSelection.AbsolutePosition.Y - Hue.AbsolutePosition.Y, 0, Hue.AbsoluteSize.Y) / Hue.AbsoluteSize.Y)
+			ColorS = (math.clamp(ColorSelection.AbsolutePosition.X - Color.AbsolutePosition.X, 0, Color.AbsoluteSize.X) / Color.AbsoluteSize.X)
+			ColorV = 1 - (math.clamp(ColorSelection.AbsolutePosition.Y - Color.AbsolutePosition.Y, 0, Color.AbsoluteSize.Y) / Color.AbsoluteSize.Y)
 			BoxColor.BackgroundColor3 = preset
 			Color.BackgroundColor3 = preset
 			pcall(callback, BoxColor.BackgroundColor3)
-
-			Color.InputBegan:Connect(
-				function(input)
-					if input.UserInputType == Enum.UserInputType.MouseButton1 then
-						if RainbowColorPicker then
-							return
-						end
-
-						if ColorInput then
-							ColorInput:Disconnect()
-						end
-
-						ColorInput =
-							RunService.RenderStepped:Connect(
-								function()
-								local ColorX =
-									(math.clamp(Mouse.X - Color.AbsolutePosition.X, 0, Color.AbsoluteSize.X) /
-										Color.AbsoluteSize.X)
-								local ColorY =
-									(math.clamp(Mouse.Y - Color.AbsolutePosition.Y, 0, Color.AbsoluteSize.Y) /
-										Color.AbsoluteSize.Y)
-
-								ColorSelection.Position = UDim2.new(ColorX, 0, ColorY, 0)
-								ColorS = ColorX
-								ColorV = 1 - ColorY
-
-								UpdateColorPicker(true)
-							end
-							)
+			Color.InputBegan:Connect(function(input)
+				if input.UserInputType == Enum.UserInputType.MouseButton1 then
+					if RainbowColorPicker then
+						return
 					end
-				end
-			)
-
-			Color.InputEnded:Connect(
-				function(input)
-					if input.UserInputType == Enum.UserInputType.MouseButton1 then
-						if ColorInput then
-							ColorInput:Disconnect()
-						end
-					end
-				end
-			)
-
-			Hue.InputBegan:Connect(
-				function(input)
-					if input.UserInputType == Enum.UserInputType.MouseButton1 then
-						if RainbowColorPicker then
-							return
-						end
-
-						if HueInput then
-							HueInput:Disconnect()
-						end
-
-						HueInput =
-							RunService.RenderStepped:Connect(
-								function()
-								local HueY =
-									(math.clamp(Mouse.Y - Hue.AbsolutePosition.Y, 0, Hue.AbsoluteSize.Y) /
-										Hue.AbsoluteSize.Y)
-
-								HueSelection.Position = UDim2.new(0.48, 0, HueY, 0)
-								ColorH = 1 - HueY
-
-								UpdateColorPicker(true)
-							end
-							)
-					end
-				end
-			)
-
-			Hue.InputEnded:Connect(
-				function(input)
-					if input.UserInputType == Enum.UserInputType.MouseButton1 then
-						if HueInput then
-							HueInput:Disconnect()
-						end
-					end
-				end
-			)
-
-			ToggleBtn.MouseButton1Down:Connect(
-				function()
-					RainbowColorPicker = not RainbowColorPicker
-
 					if ColorInput then
 						ColorInput:Disconnect()
 					end
-
+					ColorInput = RunService.RenderStepped:Connect(function()
+						local ColorX = (math.clamp(Mouse.X - Color.AbsolutePosition.X, 0, Color.AbsoluteSize.X) / Color.AbsoluteSize.X)
+						local ColorY = (math.clamp(Mouse.Y - Color.AbsolutePosition.Y, 0, Color.AbsoluteSize.Y) / Color.AbsoluteSize.Y)
+						ColorSelection.Position = UDim2.new(ColorX, 0, ColorY, 0)
+						ColorS = ColorX
+						ColorV = 1 - ColorY
+						UpdateColorPicker(true)
+					end)
+				end
+			end)
+			Color.InputEnded:Connect(function(input)
+				if input.UserInputType == Enum.UserInputType.MouseButton1 then
+					if ColorInput then
+						ColorInput:Disconnect()
+					end
+				end
+			end)
+			Hue.InputBegan:Connect(function(input)
+				if input.UserInputType == Enum.UserInputType.MouseButton1 then
+					if RainbowColorPicker then
+						return
+					end
 					if HueInput then
 						HueInput:Disconnect()
 					end
-
-					if RainbowColorPicker then
-						ToggleCircle:TweenPosition(UDim2.new(0.37, 0,-0.273, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .3, true)
-						TweenService:Create(
-							ToggleCircle,
-							TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-							{BackgroundColor3 =PresetColor}
-						):Play()
-
-						OldToggleColor = BoxColor.BackgroundColor3
-						OldColor = Color.BackgroundColor3
-						OldColorSelectionPosition = ColorSelection.Position
-						OldHueSelectionPosition = HueSelection.Position
-
-						while RainbowColorPicker do
-							BoxColor.BackgroundColor3 = Color3.fromHSV(Flux.RainbowColorValue, 1, 1)
-							Color.BackgroundColor3 = Color3.fromHSV(Flux.RainbowColorValue, 1, 1)
-
-							ColorSelection.Position = UDim2.new(1, 0, 0, 0)
-							HueSelection.Position = UDim2.new(0.48, 0, 0, Flux.HueSelectionPosition)
-
-							pcall(callback, BoxColor.BackgroundColor3)
-							wait()
-						end
-					elseif not RainbowColorPicker then
-						ToggleCircle:TweenPosition(UDim2.new(0, 0,-0.273, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .3, true)
-						TweenService:Create(
-							ToggleCircle,
-							TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-							{BackgroundColor3 = Color3.fromRGB(255,255,255)}
-						):Play()
-
-						BoxColor.BackgroundColor3 = OldToggleColor
-						Color.BackgroundColor3 = OldColor
-
-						ColorSelection.Position = OldColorSelectionPosition
-						HueSelection.Position = OldHueSelectionPosition
-
-						pcall(callback, BoxColor.BackgroundColor3)
+					HueInput = RunService.RenderStepped:Connect(function()
+						local HueY = (math.clamp(Mouse.Y - Hue.AbsolutePosition.Y, 0, Hue.AbsoluteSize.Y) / Hue.AbsoluteSize.Y)
+						HueSelection.Position = UDim2.new(0.48, 0, HueY, 0)
+						ColorH = 1 - HueY
+						UpdateColorPicker(true)
+					end)
+				end
+			end)
+			Hue.InputEnded:Connect(function(input)
+				if input.UserInputType == Enum.UserInputType.MouseButton1 then
+					if HueInput then
+						HueInput:Disconnect()
 					end
 				end
-			)
-
-			Confirm.MouseButton1Click:Connect(
-				function()
-					ColorPickerToggled = not ColorPickerToggled
-					Colorpicker:TweenSize(UDim2.new(0, 457, 0, 43), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .6, true)
-					TweenService:Create(
-						Title,
-						TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-						{TextColor3 = Color3.fromRGB(255,255,255)}
-					):Play()
-					TweenService:Create(
-						Circle,
-						TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-						{BackgroundColor3 = Color3.fromRGB(211, 211, 211)}
-					):Play()
-					TweenService:Create(
-						CircleSmall,
-						TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-						{BackgroundTransparency = 1}
-					):Play()
-					TweenService:Create(
-						Title,
-						TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-						{TextTransparency = 0.3}
-					):Play()
-					wait(.4)
-					Container.CanvasSize = UDim2.new(0, 0, 0, ContainerLayout.AbsoluteContentSize.Y)
+			end)
+			ToggleBtn.MouseButton1Down:Connect(function()
+				RainbowColorPicker = not RainbowColorPicker
+				if ColorInput then
+					ColorInput:Disconnect()
 				end
-			)
+				if HueInput then
+					HueInput:Disconnect()
+				end
+				if RainbowColorPicker then
+					ToggleCircle:TweenPosition(UDim2.new(0.37, 0, -0.273, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .3, true)
+					TweenService:Create(ToggleCircle, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+						BackgroundColor3 = PresetColor
+					}):Play()
+					OldToggleColor = BoxColor.BackgroundColor3
+					OldColor = Color.BackgroundColor3
+					OldColorSelectionPosition = ColorSelection.Position
+					OldHueSelectionPosition = HueSelection.Position
+					while RainbowColorPicker do
+						BoxColor.BackgroundColor3 = Color3.fromHSV(Flux.RainbowColorValue, 1, 1)
+						Color.BackgroundColor3 = Color3.fromHSV(Flux.RainbowColorValue, 1, 1)
+						ColorSelection.Position = UDim2.new(1, 0, 0, 0)
+						HueSelection.Position = UDim2.new(0.48, 0, 0, Flux.HueSelectionPosition)
+						pcall(callback, BoxColor.BackgroundColor3)
+						wait()
+					end
+				elseif not RainbowColorPicker then
+					ToggleCircle:TweenPosition(UDim2.new(0, 0, -0.273, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .3, true)
+					TweenService:Create(ToggleCircle, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+						BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+					}):Play()
+					BoxColor.BackgroundColor3 = OldToggleColor
+					Color.BackgroundColor3 = OldColor
+					ColorSelection.Position = OldColorSelectionPosition
+					HueSelection.Position = OldHueSelectionPosition
+					pcall(callback, BoxColor.BackgroundColor3)
+				end
+			end)
+			Confirm.MouseButton1Click:Connect(function()
+				ColorSelection.Visible = false
+				HueSelection.Visible = false
+				ColorPickerToggled = not ColorPickerToggled
+				Colorpicker:TweenSize(UDim2.new(0, 457, 0, 43), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .6, true)
+				TweenService:Create(Title, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+					TextColor3 = Color3.fromRGB(255, 255, 255)
+				}):Play()
+				TweenService:Create(Circle, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+					BackgroundColor3 = Color3.fromRGB(211, 211, 211)
+				}):Play()
+				TweenService:Create(CircleSmall, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+					BackgroundTransparency = 1
+				}):Play()
+				TweenService:Create(Title, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+					TextTransparency = 0.3
+				}):Play()
+				wait(.4)
+				Container.CanvasSize = UDim2.new(0, 0, 0, ContainerLayout.AbsoluteContentSize.Y)
+			end)
 			Container.CanvasSize = UDim2.new(0, 0, 0, ContainerLayout.AbsoluteContentSize.Y)
 		end
 		function ContainerContent:Line()
