@@ -184,7 +184,6 @@ function Flux:Window(text, bottom,mainclr,toclose)
 	
 	MakeDraggable(Drag,MainFrame)
 	MakeDraggable(LeftFrame,MainFrame)
-	MainFrame:TweenSize(UDim2.new(0, 706, 0, 484), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .6, true)
 	
 	function Flux:Notification(desc,buttontitle)
 		local NotificationFunc = {}
