@@ -187,10 +187,9 @@ function Flux:Window(text, bottom,mainclr,toclose)
 	MakeDraggable(LeftFrame,MainFrame)
 	MainFrame:TweenSize(UDim2.new(0, 706, 0, 484), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .6, true)
 	
-	function Flux:Notify(desc,buttontitle,title)
-		local Func = {}
+	function Flux:Notification(desc,buttontitle,title)
 		for i, v in next, MainFrame:GetChildren() do
-			if v.Name == "Base" then
+			if v.Name == "NotificationBase" then
 				v:Destroy()
 			end
 		end
@@ -203,6 +202,7 @@ function Flux:Window(text, bottom,mainclr,toclose)
 		local CloseBtn = Instance.new("TextButton")
 		local CloseBtnCorner = Instance.new("UICorner")
 		local NotificationDesc = Instance.new("TextLabel")
+
 		NotificationBase.Name = "NotificationBase"
 		NotificationBase.Parent = MainFrame
 		NotificationBase.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
@@ -214,9 +214,11 @@ function Flux:Window(text, bottom,mainclr,toclose)
 		NotificationBase.TextColor3 = Color3.fromRGB(0, 0, 0)
 		NotificationBase.TextSize = 14.000
 		NotificationBase.Visible = true
+
 		NotificationBaseCorner.CornerRadius = UDim.new(0, 5)
 		NotificationBaseCorner.Name = "NotificationBaseCorner"
 		NotificationBaseCorner.Parent = NotificationBase
+
 		NotificationFrame.Name = "NotificationFrame"
 		NotificationFrame.Parent = NotificationBase
 		NotificationFrame.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -224,9 +226,11 @@ function Flux:Window(text, bottom,mainclr,toclose)
 		NotificationFrame.ClipsDescendants = true
 		NotificationFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
 		NotificationFrame.Size = UDim2.new(0, 0, 0, 0)
+
 		NotificationFrameCorner.CornerRadius = UDim.new(0, 5)
 		NotificationFrameCorner.Name = "NotificationFrameCorner"
 		NotificationFrameCorner.Parent = NotificationFrame
+
 		NotificationFrameGlow.Name = "NotificationFrameGlow"
 		NotificationFrameGlow.Parent = NotificationFrame
 		NotificationFrameGlow.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -239,6 +243,7 @@ function Flux:Window(text, bottom,mainclr,toclose)
 		NotificationFrameGlow.ImageColor3 = Color3.fromRGB(15, 15, 15)
 		NotificationFrameGlow.ScaleType = Enum.ScaleType.Slice
 		NotificationFrameGlow.SliceCenter = Rect.new(20, 20, 280, 280)
+
 		NotificationTitle.Name = "NotificationTitle"
 		NotificationTitle.Parent = NotificationFrame
 		NotificationTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -246,14 +251,15 @@ function Flux:Window(text, bottom,mainclr,toclose)
 		NotificationTitle.Position = UDim2.new(0.0400609747, 0, 0.0761325806, 0)
 		NotificationTitle.Size = UDim2.new(0, 111, 0, 34)
 		NotificationTitle.Font = Enum.Font.GothamBold
-		NotificationTitle.Text = title
+		NotificationTitle.Text = title or Title.Text .. " | NOTIFICATION"
 		NotificationTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
 		NotificationTitle.TextSize = 24.000
 		NotificationTitle.TextXAlignment = Enum.TextXAlignment.Left
 		NotificationTitle.TextTransparency = 1
+
 		CloseBtn.Name = "CloseBtn"
 		CloseBtn.Parent = NotificationFrame
-		CloseBtn.BackgroundColor3 = colorfromrgb
+		CloseBtn.BackgroundColor3 = Color3.fromRGB(64, 68, 75)
 		CloseBtn.ClipsDescendants = true
 		CloseBtn.Position = UDim2.new(0.0403124988, 0, 0.720855951, 0)
 		CloseBtn.Size = UDim2.new(0, 366, 0, 43)
@@ -264,9 +270,11 @@ function Flux:Window(text, bottom,mainclr,toclose)
 		CloseBtn.TextSize = 15.000
 		CloseBtn.TextTransparency = 1
 		CloseBtn.BackgroundTransparency = 1
+
 		CloseBtnCorner.CornerRadius = UDim.new(0, 4)
 		CloseBtnCorner.Name = "CloseBtnCorner"
 		CloseBtnCorner.Parent = CloseBtn
+
 		NotificationDesc.Name = "NotificationDesc"
 		NotificationDesc.Parent = NotificationFrame
 		NotificationDesc.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
