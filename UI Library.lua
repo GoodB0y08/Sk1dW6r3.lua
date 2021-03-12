@@ -187,10 +187,10 @@ function Flux:Window(text, bottom,mainclr,toclose)
 	MakeDraggable(LeftFrame,MainFrame)
 	MainFrame:TweenSize(UDim2.new(0, 706, 0, 484), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .6, true)
 	
-	function Flux:Notification(desc,buttontitle,title)
-		local NotificationFunc = {}
+	function Flux:Notify(desc,buttontitle,title)
+		local Func = {}
 		for i, v in next, MainFrame:GetChildren() do
-			if v.Name == "NotificationBase" then
+			if v.Name == "Base" then
 				v:Destroy()
 			end
 		end
