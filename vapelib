@@ -148,13 +148,15 @@ function lib:Window(text, preset, closebind)
         function(io, p)
             if io.KeyCode == CloseBind then
                 if uitoggled == false then
-                    Main:TweenSize(UDim2.new(0, 0, 0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .6, true)
+                    local uii = game:GetService("CoreGui"):FindFirstChild("ui")
+                    local main = ui:FindFirstChild("Main")
+                    main:TweenSize(UDim2.new(0, 0, 0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .6, true)
                     uitoggled = true
                     wait(.5)
-                    knixhub.Enabled = false
+                    uii.Enabled = false
                 else
-                    Main:TweenSize(UDim2.new(0, 560, 0, 319), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .6, true)
-                    knixhub.Enabled = true
+                    main:TweenSize(UDim2.new(0, 560, 0, 319), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .6, true)
+                    main.Enabled = true
                     uitoggled = false
                 end
             end
