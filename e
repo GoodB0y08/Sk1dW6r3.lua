@@ -42,7 +42,7 @@ local mouse = game:GetService("Players").LocalPlayer:GetMouse()
 local HttpService = game:GetService("HttpService")
 
 local Design1 = Instance.new("ScreenGui")
-Design1.Name = HttpService:GenerateGUID(false)
+Design1.Name = "debug"
 Design1.Parent = game:GetService("CoreGui")
 library.mainUI = Design1
 
