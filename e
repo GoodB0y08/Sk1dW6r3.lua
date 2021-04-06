@@ -8,21 +8,6 @@ local options = _G.options or
     font = Enum.Font.SourceSansSemibold,
 }
 
-local DefaultSettings = {
-	UIColorSettings = {
-		["ColorGradient1"] = {0,0.43674468994140625,1},
-		["ColorGradient2"] = {0.07463932037353515625,0,1},
-		["GradientTwoEnabled"] = true,
-		["FasterLoading"] = false,
-	},
-}
-
-local GradientTwoEnabled = DefaultSettings["UIColorSettings"]["GradientTwoEnabled"]--true
-local grad1 = DefaultSettings["UIColorSettings"]["ColorGradient1"]
-local grad2 = DefaultSettings["UIColorSettings"]["ColorGradient2"]
-local ColorGradient1 = Color3.new(grad1[1],grad1[2],grad1[3]) or Color3.new(0, 0.25, 1)
-local ColorGradient2 = GradientTwoEnabled and Color3.new(grad2[1],grad2[2],grad2[3]) or (ColorGradient1 or GradientTwoEnabled)-- and Color3.fromRGB(0, 0, 255) or ColorGradient1
-
 local uiGradients = {}
 local toggleInnerCircles = {}
 local toggleOuterCircles = {}
